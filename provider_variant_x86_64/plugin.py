@@ -25,8 +25,6 @@ class VariantProperty:
 
 
 class X8664Plugin:
-    namespace = "x86_64"
-
     max_known_level = 4
     """Max microarchitecture level supported at the time"""
 
@@ -155,7 +153,6 @@ class X8664Plugin:
             )
 
         for prop in properties:
-            assert prop.namespace == cls.namespace
             if prop.feature == "level":
                 return [
                     f"-march=x86-64-{prop.value}"
@@ -166,6 +163,5 @@ class X8664Plugin:
 
 
 if __name__ == "__main__":
-    print(f"{X8664Plugin.namespace=}")  # noqa: T201
     print(f"{X8664Plugin.get_supported_configs()=}")  # noqa: T201
     print(f"{X8664Plugin.get_all_configs()=}")  # noqa: T201
