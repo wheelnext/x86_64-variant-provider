@@ -1,4 +1,4 @@
-# provider-variant-x86-64
+# x86_64-variant-provider
 
 This is a plugin for the proposed [wheel variants implementation](
 https://github.com/wheelnext/pep_xxx_wheel_variants) that provides
@@ -8,13 +8,13 @@ properties specific to x86-64 CPUs.
 
 Namespace: `x86_64`
 
-Plugin API: `provider_variant_x86_64` (matching the default)
+Plugin API: `x86_64_variant_provider` (matching the default)
 
 Example use in `pyproject.toml`:
 
 ```toml
 [variant.providers.x86_64]
-requires = ["provider-variant-x86-64"]
+requires = ["x86_64-variant-provider"]
 ```
 
 ## Provided properties
@@ -66,7 +66,7 @@ fine, disabling the code in question).
 ## Detection
 
 Detection is backed by archspec and shared between
-[provider-variant-x86-64](https://github.com/wheelnext/provider-variant-x86-64)
+[x86_64-variant-provider](https://github.com/wheelnext/x86_64-variant-provider)
 and
 [provider-variant-aarch64](https://github.com/wheelnext/provider-variant-aarch64).
 The output from each command is mapped against the

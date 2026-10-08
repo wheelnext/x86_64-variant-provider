@@ -4,9 +4,9 @@ from argparse import Namespace
 
 import pytest
 
-from provider_variant_x86_64.plugin import VariantFeatureConfig
-from provider_variant_x86_64.plugin import X8664Plugin
-from provider_variant_x86_64.plugin import archspec_cpu
+from x86_64_variant_provider.plugin import VariantFeatureConfig
+from x86_64_variant_provider.plugin import X8664Plugin
+from x86_64_variant_provider.plugin import archspec_cpu
 from variantlib.models.variant import VariantProperty
 
 
@@ -17,7 +17,7 @@ def plugin() -> X8664Plugin:
 
 def test_bulldozer_configs(mocker, plugin):
     mocker.patch(
-        "provider_variant_x86_64.plugin.archspec_cpu.host"
+        "x86_64_variant_provider.plugin.archspec_cpu.host"
     ).return_value = archspec_cpu.TARGETS["bulldozer"]
     assert plugin.get_supported_configs() == [
         VariantFeatureConfig("level", ["v2", "v1"]),
@@ -39,7 +39,7 @@ def test_bulldozer_configs(mocker, plugin):
 
 def test_sandybridge_configs(mocker, plugin):
     mocker.patch(
-        "provider_variant_x86_64.plugin.archspec_cpu.host"
+        "x86_64_variant_provider.plugin.archspec_cpu.host"
     ).return_value = archspec_cpu.TARGETS["sandybridge"]
     assert plugin.get_supported_configs() == [
         VariantFeatureConfig("level", ["v2", "v1"]),
@@ -59,7 +59,7 @@ def test_sandybridge_configs(mocker, plugin):
 
 def test_generic_configs(mocker, plugin):
     mocker.patch(
-        "provider_variant_x86_64.plugin.archspec_cpu.host"
+        "x86_64_variant_provider.plugin.archspec_cpu.host"
     ).return_value = archspec_cpu.TARGETS["x86_64_v2"]
     assert plugin.get_supported_configs() == [
         VariantFeatureConfig("level", ["v2", "v1"]),
@@ -78,7 +78,7 @@ def test_generic_configs(mocker, plugin):
 
 def test_non_x86_configs(mocker, plugin):
     mocker.patch(
-        "provider_variant_x86_64.plugin.archspec_cpu.host"
+        "x86_64_variant_provider.plugin.archspec_cpu.host"
     ).return_value = archspec_cpu.TARGETS["cortex_a72"]
     assert plugin.get_supported_configs() == []
 
@@ -117,7 +117,7 @@ def test_level_cap(mocker, plugin):
     """Test that we do not return level higher than declared supported"""
 
     mocker.patch(
-        "provider_variant_x86_64.plugin.archspec_cpu.host"
+        "x86_64_variant_provider.plugin.archspec_cpu.host"
     ).return_value = Namespace(generic=Namespace(name="x86_64_v6"))
     assert plugin.get_supported_configs() == [
         VariantFeatureConfig("level", ["v4", "v3", "v2", "v1"]),

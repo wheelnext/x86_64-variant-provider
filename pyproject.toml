@@ -8,7 +8,7 @@ dev-dependencies = [
 ]
 
 [project]
-name = "provider-variant-x86-64"
+name = "x86_64-variant-provider"
 authors = [{name = "Michał Górny", email = "mgorny@quansight.com"}]
 license = "MIT"
 license-files = ["LICENSE"]
@@ -24,7 +24,7 @@ test = [
 ]
 
 [project.urls]
-Home = "https://github.com/wheelnext/provider-variant-x86-64/"
+Home = "https://github.com/wheelnext/x86_64-variant-provider/"
 
 [project.entry-points.variant_plugins]
-x86_64 = "provider_variant_x86_64"
+x86_64 = "x86_64_variant_provider"
