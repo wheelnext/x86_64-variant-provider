@@ -21,22 +21,6 @@ def test_bulldozer_configs(mocker, plugin):
     ).return_value = archspec_cpu.TARGETS["bulldozer"]
     assert plugin.get_supported_configs() == [
         VariantFeatureConfig("level", ["v2", "v1"]),
-        VariantFeatureConfig("avx", ["on"]),
-        VariantFeatureConfig("abm", ["on"]),
-        VariantFeatureConfig("xsave", ["on"]),
-        VariantFeatureConfig("aes", ["on"]),
-        VariantFeatureConfig("pclmulqdq", ["on"]),
-        VariantFeatureConfig("sse4a", ["on"]),
-        VariantFeatureConfig("sse4_2", ["on"]),
-        VariantFeatureConfig("sse4_1", ["on"]),
-        VariantFeatureConfig("ssse3", ["on"]),
-        VariantFeatureConfig("sse3", ["on"]),
-        VariantFeatureConfig("cx16", ["on"]),
-        VariantFeatureConfig("lahf_lm", ["on"]),
-        VariantFeatureConfig("popcnt", ["on"]),
-        VariantFeatureConfig("sse2", ["on"]),
-        VariantFeatureConfig("sse", ["on"]),
-        VariantFeatureConfig("mmx", ["on"]),
     ]
 
 
@@ -46,19 +30,6 @@ def test_sandybridge_configs(mocker, plugin):
     ).return_value = archspec_cpu.TARGETS["sandybridge"]
     assert plugin.get_supported_configs() == [
         VariantFeatureConfig("level", ["v2", "v1"]),
-        VariantFeatureConfig("avx", ["on"]),
-        VariantFeatureConfig("aes", ["on"]),
-        VariantFeatureConfig("pclmulqdq", ["on"]),
-        VariantFeatureConfig("sse4_2", ["on"]),
-        VariantFeatureConfig("sse4_1", ["on"]),
-        VariantFeatureConfig("ssse3", ["on"]),
-        VariantFeatureConfig("sse3", ["on"]),
-        VariantFeatureConfig("cx16", ["on"]),
-        VariantFeatureConfig("lahf_lm", ["on"]),
-        VariantFeatureConfig("popcnt", ["on"]),
-        VariantFeatureConfig("sse2", ["on"]),
-        VariantFeatureConfig("sse", ["on"]),
-        VariantFeatureConfig("mmx", ["on"]),
     ]
 
 
@@ -68,16 +39,6 @@ def test_generic_configs(mocker, plugin):
     ).return_value = archspec_cpu.TARGETS["x86_64_v2"]
     assert plugin.get_supported_configs() == [
         VariantFeatureConfig("level", ["v2", "v1"]),
-        VariantFeatureConfig("sse4_2", ["on"]),
-        VariantFeatureConfig("sse4_1", ["on"]),
-        VariantFeatureConfig("ssse3", ["on"]),
-        VariantFeatureConfig("sse3", ["on"]),
-        VariantFeatureConfig("cx16", ["on"]),
-        VariantFeatureConfig("lahf_lm", ["on"]),
-        VariantFeatureConfig("popcnt", ["on"]),
-        VariantFeatureConfig("sse2", ["on"]),
-        VariantFeatureConfig("sse", ["on"]),
-        VariantFeatureConfig("mmx", ["on"]),
     ]
 
 
@@ -95,7 +56,6 @@ def test_get_compiler_flags(plugin):
         "14.3.0",
         [
             VariantProperty("x86_64", "level", "v2"),
-            VariantProperty("x86_64", "avx2", "on"),
         ],
     ) == ["-march=x86-64-v2"]
 
@@ -107,7 +67,6 @@ def test_get_compiler_flags_no_level(plugin):
             "clang",
             "20.1.8",
             [
-                VariantProperty("x86_64", "avx2", "on"),
             ],
         )
         == []
