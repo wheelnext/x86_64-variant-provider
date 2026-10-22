@@ -29,79 +29,8 @@ class X8664Plugin:
     """Max microarchitecture level supported at the time"""
 
     all_features = [
-        # zen5 features features
-        "avx_vnni",
-        "cppc",
-        "ibrs_enhanced",
-        "tsc_adjust",
-        # zen4 features features
-        "flush_l1d",
-        # sapphirerapids features
-        "movdir64b",
-        "movdiri",
-        # icelake features
-        "avx512_bf16",
-        "avx512_bitalg",
-        "avx512_vbmi2",
-        "avx512_vnni",
-        "avx512_vp2intersect",
-        "avx512_vpopcntdq",
-        "avx512ifma",
-        "avx512vbmi",
-        "rdpid",
-        "sha_ni",
-        "vaes",
-        "vpclmulqdq",
-        # skylake_avx512 features
-        "clwb",
-        "clzero",
-        # x86-64-v4 features
-        "avx512bw",
-        "avx512cd",
-        "avx512dq",
-        "avx512f",
-        "avx512vl",
-        # skylake features
-        "clflushopt",
-        "gfni",
-        "rdseed",
-        "xsavec",
-        "xsaveopt",
-        # broadwell features
-        "adx",
-        # x86-64-v3 features
-        "avx2",
-        "avx",
-        "bmi2",
-        "bmi1",
-        "abm",
-        "f16c",
-        "fma",
-        "movbe",
-        "xsave",
-        # sandybridge features
-        "rdrand",
-        # westmere features
-        "aes",
-        # nehalem features
-        "pclmulqdq",
-        # steamroller features
-        "sse4a",
-        "fsgsbase",
-        # x86-64-v2 features
-        "sse4_2",
-        "sse4_1",
-        "ssse3",
-        "sse3",
-        "cx16",
-        "lahf_lm",
-        "popcnt",
-        # x86-64-v1 features
-        "sse2",
-        "sse",
-        "mmx",
     ]
-    """All features supported by archspec at the time, sorted in preference order"""
+    """All features emitted, sorted in preference order"""
 
     @staticmethod
     def _level_range(max_level: int) -> Generator[str]:
