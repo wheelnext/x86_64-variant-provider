@@ -1,6 +1,6 @@
 [build-system]
-requires = ["flit_core >=3.11,<4"]
-build-backend = "flit_core.buildapi"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [tool.uv]
 dev-dependencies = [
@@ -9,12 +9,19 @@ dev-dependencies = [
 
 [project]
 name = "x86_64-variant-provider"
+description = "A wheel variant provider with properties specific to x86_64 CPUs"
 authors = [{name = "Michał Górny", email = "mgorny@quansight.com"}]
 license = "MIT"
-license-files = ["LICENSE"]
+license-files = [
+    "LICENSE",
+    "x86_64_variant_provider/vendor/archspec/COPYRIGHT",
+    "x86_64_variant_provider/vendor/archspec/LICENSE-*",
+    "x86_64_variant_provider/vendor/archspec/NOTICE",
+    "x86_64_variant_provider/vendor/archspec/archspec/vendor/cpuid/LICENSE",
+]
 readme = "README.md"
 requires-python = ">=3.9"
-dynamic = ["version", "description"]
+dynamic = ["version"]
 dependencies = []
 
 [dependency-groups]
@@ -29,3 +36,16 @@ Home = "https://github.com/wheelnext/x86_64-variant-provider/"
 
 [project.entry-points.variant_plugins]
 x86_64 = "x86_64_variant_provider"
+
+[tool.hatch.version]
+path = "x86_64_variant_provider/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+include = [
+    "x86_64_variant_provider/*.py",
+    "x86_64_variant_provider/vendor/*.py",
+    "x86_64_variant_provider/vendor/archspec/archspec/*.py",
+    "x86_64_variant_provider/vendor/archspec/archspec/cpu/*.py",
+    "x86_64_variant_provider/vendor/archspec/archspec/json/cpu",
+    "x86_64_variant_provider/vendor/archspec/archspec/vendor/cpuid/cpuid.py",
+]
