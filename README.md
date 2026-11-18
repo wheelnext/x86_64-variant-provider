@@ -68,7 +68,7 @@ fine, disabling the code in question).
 Detection is backed by archspec and shared between
 [x86_64-variant-provider](https://github.com/wheelnext/x86_64-variant-provider)
 and
-[provider-variant-aarch64](https://github.com/wheelnext/provider-variant-aarch64).
+[aarch64-variant-provider](https://github.com/wheelnext/aarch64-variant-provider).
 The output from each command is mapped against the
 [archspec microarchitecture database](https://github.com/archspec/archspec-json/blob/90b453f4053b6b139d1d2cb78c463b02e71ef363/cpu/microarchitectures.json)
 to emit the actual feature.
