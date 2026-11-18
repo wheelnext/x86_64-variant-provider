@@ -24,3 +24,6 @@ Home = "https://github.com/wheelnext/x86_64-variant-provider/"
 
 [project.entry-points.variant_plugins]
 x86_64 = "x86_64_variant_provider"
+
+[tool.flit.sdist]
+include = ["tests/"]
