@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import TYPE_CHECKING
 
-from .vendor.archspec.archspec import cpu as archspec_cpu
+import archspec.cpu
 
 if TYPE_CHECKING:
     from collections.abc import Generator
@@ -45,7 +45,7 @@ class X8664Plugin:
 
     @classmethod
     def get_supported_configs(cls) -> list[VariantFeatureConfig]:
-        microarch = archspec_cpu.host()
+        microarch = archspec.cpu.host()
         generic = microarch.generic
         if generic.name.startswith("x86_64_v"):
             supported_level = int(generic.name.removeprefix("x86_64_v"))

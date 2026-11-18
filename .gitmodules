@@ -1,3 +1,0 @@
-[submodule "x86_64_variant_provider/vendor/archspec"]
-	path = x86_64_variant_provider/vendor/archspec
-	url = https://github.com/archspec/archspec.git
